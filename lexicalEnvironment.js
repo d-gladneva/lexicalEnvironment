@@ -2,17 +2,33 @@ let isNumber = function (n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
 };
 
-function guessNum(){
-    const num =17;
+function guessNum() {
+    const num = 17;
+    let attempts = 10;
     let userNum = prompt('Угадайте число');
-    if (!isNumber(userNum)) {
-        userNum = prompt('Угадайте число');
+
+     function user() {
+        if (isNaN(userNum) || userNum==='') {
+            console.log('Введите число!');
+            userNum = prompt('Угадайте число');
+        } else if (userNum===null) return;
+         attempts--;
+        if (num < userNum) {
+            console.log('Загаданное число меньше, осталось попыток: ', attempts);
+            guessNum();
+        } else if (num > userNum) {
+            console.log('Загаданное число больше, осталось попыток: ', attempts);
+            guessNum();
+        } else if (num == userNum) {
+            console.log('Поздравляю, Вы победили!');
+            return;
+        } else if (num==null){
+            return;
+        }
+
     }
-    function user(b) {
-        if (num>b) {
-            console.log('Загаданное число меньше');
-        } else if (num<b) console.log('Загаданное число больше');
-    }
-    return user(userNum)
+    return user();
 }
+
 guessNum();
+
