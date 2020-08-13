@@ -8,10 +8,10 @@ function guessNum() {
     let userNum = prompt('Угадайте число');
 
      function user() {
-        if (!isNumber(userNum)) {
+        if (isNaN(userNum) || userNum==='') {
             console.log('Введите число!');
             userNum = prompt('Угадайте число');
-        }
+        } else if (userNum===null) return;
          attempts--;
         if (num < userNum) {
             console.log('Загаданное число меньше, осталось попыток: ', attempts);
@@ -21,6 +21,9 @@ function guessNum() {
             guessNum();
         } else if (num == userNum) {
             console.log('Поздравляю, Вы победили!');
+            return;
+        } else if (num==null){
+            return;
         }
 
     }
