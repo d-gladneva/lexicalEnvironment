@@ -7,27 +7,25 @@ function guessNum() {
     let attempts = 10;
     let userNum = prompt('Угадайте число');
 
-    return function () {
+     function user() {
         if (!isNumber(userNum)) {
+            console.log('Введите число!');
             userNum = prompt('Угадайте число');
         }
-        attempts--;
+         attempts--;
         if (num < userNum) {
             console.log('Загаданное число меньше, осталось попыток: ', attempts);
-            userNum = prompt('Угадайте число');
+            guessNum();
         } else if (num > userNum) {
             console.log('Загаданное число больше, осталось попыток: ', attempts);
-            userNum = prompt('Угадайте число');
+            guessNum();
         } else if (num == userNum) {
             console.log('Поздравляю, Вы победили!');
         }
 
     }
-
+    return user();
 }
 
-const guessBotNum = guessNum();
-
-guessBotNum();
-console.log(guessBotNum);
+guessNum();
 
