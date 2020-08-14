@@ -1,6 +1,5 @@
 function guessNum() {
-    // const num = (Math.floor(Math.random() * 100) + 1);
-    const num = 17;
+    const num = (Math.floor(Math.random() * 100) + 1);
     let attempts = 10;
     let userNum = prompt('Угадайте число');
 
