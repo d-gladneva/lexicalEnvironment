@@ -1,24 +1,23 @@
 function guessNum() {
     const num = (Math.floor(Math.random() * 100) + 1);
-    let attempts = 10;
-    let userNum = prompt('Угадайте число');
+    console.log(num);
 
-     function user() {
-        if (isNaN(userNum) || userNum==='') {
+
+    function user() {
+        let userNum = prompt('Угадайте число');
+        if (isNaN(userNum) || userNum === '') {
             confirm('Введите число!');
             userNum = prompt('Угадайте число');
-        } else if (userNum===null) {
+        } else if (userNum === null) {
             alert('Игра окончена');
             return;
         }
-
-         attempts--;
         if (num < userNum && num > 0) {
-            alert('Загаданное число меньше, осталось попыток: ', attempts);
-            guessNum();
+            alert('Загаданное число меньше');
+            user();
         } else if (num > userNum && num < 100) {
-            alert('Загаданное число больше, осталось попыток: ', attempts);
-            guessNum();
+            alert('Загаданное число больше');
+            user();
         } else if (num == userNum) {
             alert('Поздравляю, Вы победили!');
             return;
@@ -26,6 +25,7 @@ function guessNum() {
         }
 
     }
+
     return user();
 }
 
